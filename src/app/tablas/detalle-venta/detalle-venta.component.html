@@ -1,0 +1,54 @@
+<p>detalle-venta works!</p>
+
+
+<h1>Administracion de Ventas </h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">ID Detalle Venta</th>
+          <th scope="col">Fecha Venta </th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Nombre </th>
+          <th scope="col">idProducto</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+        </tr>
+      </thead>
+      	
+      <tbody>
+        <tr *ngFor="let art of detalle_venta">
+        <td>{{art.idDetalle_venta}}</td>
+        <td>{{art.Fecha_venta}}</td>
+        <td>{{art.Cantidad}} </td>
+        <td>{{art.Nombre}}</td>
+        <td>{{art.idProducto}}</td>
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idDetalle_venta)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idDetalle_venta)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+    <ng-template #sinarticulos><p>No hay pedidos</p></ng-template>
+
+    <div>
+      <p>
+        ID Detalle Venta:<input type="text" [(ngModel)]="art.idDetalle_venta" />
+      </p>
+      <p>
+        Fecha Venta <input type="text" [(ngModel)]="art.Fecha_venta" />
+      </p>
+      <p>
+        Cantidad:<input type="number" [(ngModel)]="art.Cantidad" />
+      </p> 
+      <p>
+        Nombre:<input type="text" [(ngModel)]="art.Nombre" />
+      </p>
+      <p>
+        ID Producto:<input type="Email" [(ngModel)]="art.idProducto" />
+      </p>
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

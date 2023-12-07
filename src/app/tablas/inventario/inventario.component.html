@@ -1,0 +1,53 @@
+<h1>Administracion de inventario</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">ID</th>
+          <th scope="col">ID Productos</th>
+          <th scope="col">Entradas</th>
+          <th scope="col">Salidas</th>
+          <th scope="col">Saldo</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of inventario">
+        <td>{{art.idInventario}}</td>
+        <td>{{art.Id_Productos}}</td>
+        <td>{{art.Entradas}}</td>
+        <td>{{art.Salidas}}</td>
+        <td>{{art.Saldo}}</td>
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idInventario)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idInventario)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        ID inventario<input type="text" [(ngModel)]="art.idInventario" />
+      </p>
+      <p>
+        ID Productos <input type="text" [(ngModel)]="art.Id_Productos" />
+      </p>
+      <p>
+        Entradas <input type="number" [(ngModel)]="art.Entradas" />
+      </p> 
+      <p>
+        Salidas: <input type="text" [(ngModel)]="art.Salidas" />
+      </p>
+      <p>
+        Saldo:<input type="Email" [(ngModel)]="art.Saldo" />
+      </p>
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

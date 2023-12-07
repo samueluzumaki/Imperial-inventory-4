@@ -1,0 +1,49 @@
+<h1>Administracion de Detalle producto</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+
+            
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of detalle_producto">
+        <td>{{art.idDetalle_producto}}</td>
+        <td>{{art.Nombre}}</td>
+        <td>{{art.Tipo}}</td>
+        <td>{{art.Cantidad}}</td>
+
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idDetalle_producto)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idDetalle_producto)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        Id Detalle producto:<input type="text" [(ngModel)]="art.idDetalle_producto" />
+      </p>
+      <p>
+        Nombre:<input type="text" [(ngModel)]="art.Nombre" />
+      </p>
+      <p>
+        Tipo:<input type="text" [(ngModel)]="art.Tipo" />
+      </p> 
+      <p>
+        Cantidad:<input type="text" [(ngModel)]="art.Cantidad" />
+      </p> 
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

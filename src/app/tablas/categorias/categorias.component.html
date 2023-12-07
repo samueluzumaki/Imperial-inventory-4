@@ -1,0 +1,44 @@
+<h1>Administracion de Categorias</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">Codigo</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of categoria">
+        <td>{{art.Cod_Categoria}}</td>
+        <td>{{art.Tipo}}</td>
+        <td>{{art.Estado}}</td>
+
+        <td><button class="btn btn-primary" (click)="seleccionar(art.Cod_Categoria)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.Cod_Categoria)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        Cod Categorias:<input type="text" [(ngModel)]="art.Cod_Categoria" />
+      </p>
+      <p>
+        Tipo:<input type="text" [(ngModel)]="art.Tipo" />
+      </p>
+      <p>
+        Estado:<input type="text" [(ngModel)]="art.Estado" />
+      </p> 
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

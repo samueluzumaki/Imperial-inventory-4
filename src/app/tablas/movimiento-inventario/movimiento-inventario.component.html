@@ -1,0 +1,74 @@
+
+<h1>Administracion de Movimiento de inventarioo</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">ID Movimiento</th>
+          <th scope="col">Fecha_movimiento</th>
+          <th scope="col">Tipo_movimiento</th>
+          <th scope="col">Id_producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Factura</th>
+          <th scope="col">Orden_pedido</th>
+          <th scope="col">Venta_producto</th>
+          <th scope="col">Id_Usuarios</th>
+
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of movimiento_inventario">
+            
+        <td>{{art.id_Movimiento_inventario}}</td>
+        <td>{{art.Fecha_movimiento}}</td>
+        <td>{{art.Tipo_movimiento}}</td>
+        <td>{{art.Id_producto}}</td>
+        <td>{{art.Cantidad}}</td>
+        <td>{{art.Factura}}</td>
+        <td>{{art.Orden_pedido}}</td>
+        <td>{{art.Venta_producto}}</td>
+        <td>{{art.Id_Usuarios}}</td>
+        <td><button class="btn btn-primary" (click)="seleccionar(art.id_Movimiento_inventario)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.id_Movimiento_inventario)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        ID Movimientos:<input type="text" [(ngModel)]="art.id_Movimiento_inventario" />
+      </p>
+      <p>
+        Fecha_movimiento:<input type="text" [(ngModel)]="art.Fecha_movimiento" />
+      </p>
+      <p>
+        Tipo_movimiento:<input type="number" [(ngModel)]="art.Tipo_movimiento" />
+      </p> 
+      <p>
+        Id_producto:<input type="text" [(ngModel)]="art.Id_producto" />
+      </p>
+      <p>
+        Cantidad:<input type="Email" [(ngModel)]="art.Cantidad" />
+      </p>
+      <p>
+        Factura:<input type="text" [(ngModel)]="art.Factura" />
+      </p>
+      <p>
+        Orden_pedido:<input type="number" [(ngModel)]="art.Orden_pedido" />
+      </p>
+      <p>
+        Venta_producto:<input type="number" [(ngModel)]="art.Venta_producto" />
+      </p>
+      <p>
+        Id_Usuarios:<input type="number" [(ngModel)]="art.Id_Usuarios" />
+      </p>
+      
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

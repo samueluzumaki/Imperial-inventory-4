@@ -1,0 +1,50 @@
+<p>ventas works!</p>
+
+
+<h1>Administracion de ventas</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Salidas</th>
+          <th scope="col">Fecha_salida</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of ventas">
+        <td>{{art.idVentas}}</td>
+        <td>{{art.Nombre}}</td>
+        <td>{{art.Salidas}}</td>
+        <td>{{art.Fecha_salida}}</td>
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idVentas)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idVentas)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        ID Venta:<input type="text" [(ngModel)]="art.idVentas" />
+      </p>
+      <p>
+        Nombre:<input type="text" [(ngModel)]="art.Nombre" />
+      </p>
+      <p>
+        Salida:<input type="number" [(ngModel)]="art.Salidas" />
+      </p> 
+      <p>
+        Fecha Salida: <input type="text" [(ngModel)]="art.Fecha_salida" />
+      </p>
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  

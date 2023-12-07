@@ -1,0 +1,55 @@
+<h1>Administracion de Usuarios</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <tr >
+          <th scope="col">Id usuario</th>
+          <th scope="col">Nombre usuario</th>
+          <th scope="col">Apellido usuario</th>
+          <th scope="col">Rol</th>
+          <th scope="col">Password</th>
+          <th scope="col">Seleccionar</th>
+          <th scope="col">Borrar</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of usuarios">
+        <td>{{art.idUsuarios}}</td>
+        <td>{{art.Nom_usuario}}</td>
+        <td>{{art.Ape_usuario}}</td>
+        <td>{{art.Rol}}</td>
+        <td>{{art.Password}}</td>
+
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idUsuarios)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idUsuarios)">Borrar</button></td>        
+      
+        </tr>
+      </tbody>
+    </table>
+    
+    <br><br>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+
+    <div>
+      <p>
+        Id usuario:<input type="text" [(ngModel)]="art.idUsuarios" />
+      </p>
+      <p>
+        Nombre usuario:<input type="text" [(ngModel)]="art.Nom_usuario" />
+      </p>
+      <p>
+        Apellido usuario:<input type="text" [(ngModel)]="art.Ape_usuario" />
+      </p>
+      <p>
+        Rol:<input type="text" [(ngModel)]="art.Rol" />
+      </p>
+      <p>
+        Password:<input type="text" [(ngModel)]="art.Password" />
+      </p>
+      
+
+      <p><button class="btn btn-success" (click)="alta()">Agregar</button></p>
+      <p><button class="btn btn-secondary"(click)="modificacion()">Modificar</button></p>
+    </div>  
